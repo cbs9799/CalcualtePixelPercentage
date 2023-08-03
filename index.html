@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+<input type="file" id="imageFile" name="imageFile" accept="image/*">
+<p id="output"></p>
+
+<script>
+document.getElementById('imageFile').addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        var img = new Image();
+        img.onload = function() {
+            var canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+            var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            var data = imageData.data;
+            var nonTransparentOrBlackPixels = 0;
+            for (var i = 0; i < data.length; i += 4) {
+                var r = data[i];
+                var g = data[i + 1];
+                var b = data[i + 2];
+                var a = data[i + 3];
+                if (a != 0 && (r != 0 || g != 0 || b != 0)) {
+                    nonTransparentOrBlackPixels++;
+                }
+            }
+            var totalPixels = img.width * img.height;
+            var percentage = (nonTransparentOrBlackPixels / totalPixels) * 100;
+            document.getElementById('output').textContent = "The percentage of non-transparent or non-black pixels is " + percentage.toFixed(2) + "%";
+        };
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+});
+</script>
+
+</body>
+</html>
