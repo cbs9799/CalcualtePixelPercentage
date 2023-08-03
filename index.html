@@ -70,17 +70,17 @@
                     ctx.putImageData(imageData, 0, 0);
                     // 평균 밝기를 계산
                     let avgBrightness = totalBrightness / (imageData.data.length / 4) * 100; // 백분율로 변환
+                    
                     // 이미지의 너비가 600px를 초과하는 경우
                     if (canvas.width > 600) {
                         // 이미지의 비율을 계산
                         let ratio = canvas.height / canvas.width;
-                        // 캔버스의 너비를 600px로 설정
-                        canvas.width = 600;
-                        // 캔버스의 높이를 비율에 맞게 설정
-                        canvas.height = canvas.width * ratio;
-                        // 캔버스의 크기를 변경한 후 이미지를 다시 그림
-                        ctx.putImageData(imageData, 0, 0, 0, 0, canvas.width, canvas.height);
+                        // 캔버스의 스타일 너비를 600px로 설정
+                        canvas.style.width = '600px';
+                        // 캔버스의 스타일 높이를 비율에 맞게 설정
+                        canvas.style.height = (600 * ratio) + 'px';
                     }
+                    
                     // 결과를 화면에 출력
                     document.getElementById('output').innerHTML = 
                         '이미지 너비: ' + img.width + 'px<br>' +
