@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Calculate Pixel Percentage</title>
     <style>
         body {
             display: flex;
@@ -15,12 +16,24 @@
             margin-top: 20px;
             text-align: center;
         }
+        h1 {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        p {
+            font-size: 1em;
+        }
         #output img {
-            max-width: 1080px;
+            max-width: 600px;
+            height: auto;
         }
     </style>
 </head>
 <body>
+    <!-- 제목 -->
+    <h1>Calculate Pixel Percentage</h1>
+    <!-- 설명 -->
+    <p>이미지의 밝기를 퍼센트로 보여줍니다.</p>
     <!-- 이미지 파일을 선택할 수 있는 입력 필드 -->
     <input type="file" id="input" accept="image/*">
     <!-- 결과를 출력할 영역 -->
