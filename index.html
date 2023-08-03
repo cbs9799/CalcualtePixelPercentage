@@ -17,11 +17,16 @@ body {
     text-align: center;
     margin-top: 20px;
 }
+
+#resultImage {
+    max-width: 1080px;
+    height: auto;
+}
 </style>
 </head>
 <body>
 <input type="file" id="imageFile" name="imageFile" accept="image/*">
-<p id="output"></p>
+<div id="output"></div>
 <img id="resultImage">
 
 <script>
@@ -55,11 +60,11 @@ document.getElementById('imageFile').addEventListener('change', function(e) {
             ctx.putImageData(imageData, 0, 0);
             var totalPixels = img.width * img.height;
             var percentage = (nonTransparentOrBlackPixels / totalPixels) * 100;
-            var output = "Image width: " + img.width + "px\n";
-            output += "<br/>Image height: " + img.height + "px\n";
-            output += "<br/>File size: " + (file.size / 1024).toFixed(2) + "KB\n";
-            output += "<br/>The percentage of non-transparent or non-black pixels: " + percentage.toFixed(2) + "%";
-            document.getElementById('output').textContent = output;
+            var output = "Image width: " + img.width + "px<br>";
+            output += "Image height: " + img.height + "px<br>";
+            output += "File size: " + (file.size / 1024).toFixed(2) + "KB<br>";
+            output += "The percentage of non-transparent or non-black pixels: " + percentage.toFixed(2) + "%";
+            document.getElementById('output').innerHTML = output;
             document.getElementById('resultImage').src = canvas.toDataURL();
         };
         img.src = e.target.result;
