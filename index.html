@@ -1,5 +1,24 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+#output {
+    text-align: center;
+    margin-top: 20px;
+}
+</style>
+</head>
 <body>
 <input type="file" id="imageFile" name="imageFile" accept="image/*">
 <p id="output"></p>
@@ -30,7 +49,11 @@ document.getElementById('imageFile').addEventListener('change', function(e) {
             }
             var totalPixels = img.width * img.height;
             var percentage = (nonTransparentOrBlackPixels / totalPixels) * 100;
-            document.getElementById('output').textContent = "The percentage of non-transparent or non-black pixels is " + percentage.toFixed(2) + "%";
+            var output = "Image width: " + img.width + "px\n";
+            output += "Image height: " + img.height + "px\n";
+            output += "File size: " + (file.size / 1024).toFixed(2) + "KB\n";
+            output += "The percentage of non-transparent or non-black pixels: " + percentage.toFixed(2) + "%";
+            document.getElementById('output').textContent = output;
         };
         img.src = e.target.result;
     };
