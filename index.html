@@ -22,6 +22,7 @@ body {
 <body>
 <input type="file" id="imageFile" name="imageFile" accept="image/*">
 <p id="output"></p>
+<img id="resultImage">
 
 <script>
 document.getElementById('imageFile').addEventListener('change', function(e) {
@@ -45,8 +46,13 @@ document.getElementById('imageFile').addEventListener('change', function(e) {
                 var a = data[i + 3];
                 if (a != 0 && (r != 0 || g != 0 || b != 0)) {
                     nonTransparentOrBlackPixels++;
+                } else {
+                    data[i] = 255; // red
+                    data[i + 1] = 0; // green
+                    data[i + 2] = 0; // blue
                 }
             }
+            ctx.putImageData(imageData, 0, 0);
             var totalPixels = img.width * img.height;
             var percentage = (nonTransparentOrBlackPixels / totalPixels) * 100;
             var output = "Image width: " + img.width + "px\n";
@@ -54,6 +60,7 @@ document.getElementById('imageFile').addEventListener('change', function(e) {
             output += "File size: " + (file.size / 1024).toFixed(2) + "KB\n";
             output += "The percentage of non-transparent or non-black pixels: " + percentage.toFixed(2) + "%";
             document.getElementById('output').textContent = output;
+            document.getElementById('resultImage').src = canvas.toDataURL();
         };
         img.src = e.target.result;
     };
