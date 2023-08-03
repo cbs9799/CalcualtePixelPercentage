@@ -56,9 +56,9 @@ document.getElementById('imageFile').addEventListener('change', function(e) {
             var totalPixels = img.width * img.height;
             var percentage = (nonTransparentOrBlackPixels / totalPixels) * 100;
             var output = "Image width: " + img.width + "px\n";
-            output += "Image height: " + img.height + "px\n";
-            output += "File size: " + (file.size / 1024).toFixed(2) + "KB\n";
-            output += "The percentage of non-transparent or non-black pixels: " + percentage.toFixed(2) + "%";
+            output += "<br/>Image height: " + img.height + "px\n";
+            output += "<br/>File size: " + (file.size / 1024).toFixed(2) + "KB\n";
+            output += "<br/>The percentage of non-transparent or non-black pixels: " + percentage.toFixed(2) + "%";
             document.getElementById('output').textContent = output;
             document.getElementById('resultImage').src = canvas.toDataURL();
         };
