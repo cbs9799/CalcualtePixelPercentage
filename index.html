@@ -95,6 +95,7 @@
             <button id="button" style="font-size: 1.2em;">Choose a file</button>
         </p>
         <!-- 결과를 출력할 영역 -->
+        <hr id="line" style="width: 480px; height: 1px; border: none; border-top: 1px solid #c1c1c1; display: none;">
         <div id="output"></div>
     </div>
 
@@ -157,12 +158,13 @@
                         // 캔버스의 스타일 높이를 비율에 맞게 설정
                         canvas.style.height = (600 * ratio) + 'px';
                     }
-                    
+                    document.getElementById('line').style.display = 'block';
                     // 결과를 화면에 출력
                     document.getElementById('output').innerHTML = 
+                        '<span class="guide">Image information<br>' + 
                         'Width: ' + img.width + 'px, ' +
                         'Height: ' + img.height + 'px, ' +
-                        'Size: ' + Math.round(file.size / 1024) + 'KB<br>' +
+                        'Size: ' + Math.round(file.size / 1024) + 'KB<br></span>' +
                         '<p class="result">Image Brightness: <br><span class="highlight">' + avgBrightness.toFixed(2) + '%</span></p>' +
                         '<img src="' + canvas.toDataURL() + '">';
                 }
