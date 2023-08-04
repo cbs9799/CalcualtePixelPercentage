@@ -11,6 +11,7 @@
             flex-direction: column;
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
+            overflow-y: auto;
         }
         #output {
             margin-top: 20px;
@@ -30,7 +31,7 @@
             height: auto;
         }
         /* input 태그의 크기를 조절하는 스타일 */
-        @media screen and (min-width: 481px) {
+        @media screen and (min-width: 480px) {
             input[type="file"] {
                 width: 300px;  /* 너비 설정 */
                 height: 50px;  /* 높이 설정 */
@@ -44,15 +45,6 @@
                 height: 80px;  /* 높이를 더 크게 설정 */
                 font-size: 2em;  /* 글자 크기를 더 크게 설정 */
             }
-        }
-        @media screen and (min-width: 100px){
-            h1{font-color: blue;}
-        }
-        @media screen and (min-width:100px) and (max-width: 200px){
-            h1{font-color: green;}
-        }
-        @media screen and (min-width: 200px){
-            h1{font-color: red;}
         }
     </style>
 </head>
