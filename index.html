@@ -39,7 +39,7 @@
             text-align: center;
         }
         #output img {
-            max-width: 380px;
+            max-width: 360px;
             height: auto;
         }
         #mainview{
@@ -96,7 +96,7 @@
             <button id="button" style="font-size: 1.2em;">Choose a file</button>
         </p>
         <!-- 결과를 출력할 영역 -->
-        <hr id="line" style="width: 460px; height: 1px; border: none; border-top: 1px solid #c1c1c1; display: none;">
+        <hr id="line" style="width: 360px; height: 1px; border: none; border-top: 1px solid #c1c1c1; display: none;">
         <div id="output"></div>
     </div>
 
@@ -150,14 +150,14 @@
                     // 평균 밝기를 계산
                     let avgBrightness = totalBrightness / (imageData.data.length / 4) * 100; // 백분율로 변환
                     
-                    // 이미지의 너비가 380px를 초과하는 경우
-                    if (canvas.width > 380) {
+                    // 이미지의 너비가 360px를 초과하는 경우
+                    if (canvas.width > 360) {
                         // 이미지의 비율을 계산
                         let ratio = canvas.height / canvas.width;
-                        // 캔버스의 스타일 너비를 380px로 설정
-                        canvas.style.width = '380px';
+                        // 캔버스의 스타일 너비를 360px로 설정
+                        canvas.style.width = '360px';
                         // 캔버스의 스타일 높이를 비율에 맞게 설정
-                        canvas.style.height = (380 * ratio) + 'px';
+                        canvas.style.height = (360 * ratio) + 'px';
                     }
                     document.getElementById('line').style.display = 'block';
                     // 결과를 화면에 출력
