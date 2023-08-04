@@ -47,6 +47,21 @@
                 font-size: 2em;  /* 글자 크기를 더 크게 설정 */
             }
         }
+        /* 사용자 정의 버튼의 스타일 */
+        #button {
+            padding: 10px 20px;  /* 패딩 설정 */
+            font-size: 1.2em;  /* 글자 크기 설정 */
+            color: white;  /* 글자 색상 설정 */
+            background-color: #4CAF50;  /* 배경 색상 설정 */
+            border: none;  /* 테두리 제거 */
+            cursor: pointer;  /* 마우스 커서를 포인터로 설정 */
+            text-decoration: none;  /* 텍스트 밑줄 제거 */
+        }
+    
+        /* 사용자 정의 버튼에 마우스를 올렸을 때의 스타일 */
+        #button:hover {
+            background-color: #45a049;  /* 배경 색상 변경 */
+        }
     </style>
 </head>
 <body>
@@ -55,13 +70,20 @@
     <!-- 설명 -->
     <p>Displays the brightness of the image as a percentage.<br />Please select an image file to check the brightness.</p>
     <p>
-        <!-- 이미지 파일을 선택할 수 있는 입력 필드 -->
-        <input type="file" id="input" accept="image/*">
+        <!-- 숨겨진 파일 입력 필드 -->
+        <input type="file" id="input" accept="image/*" style="display: none;">
+        <!-- 사용자 정의 버튼 -->
+        <button id="button" style="font-size: 1.2em;">Choose a file</button>
     </p>
     <!-- 결과를 출력할 영역 -->
     <div id="output"></div>
 
     <script>
+        // 사용자 정의 버튼에 이벤트 리스너를 추가
+        document.getElementById('button').addEventListener('click', function() {
+            // 파일 입력 필드를 클릭하는 것과 같은 효과를 만듦
+            document.getElementById('input').click();
+        });
         // 파일 선택 입력 필드에 이벤트 리스너를 추가
         document.getElementById('input').addEventListener('change', function(e) {
             // 선택된 파일을 가져옴
